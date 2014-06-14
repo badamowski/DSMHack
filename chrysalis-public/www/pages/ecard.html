@@ -1,16 +1,18 @@
-<div class="text">
-	<img src="img/icon-recieved.jpg" />
-	<h1>{{card.from}} made you a card and donated {{amount}} in your name to Chrysalis!</h1>
-	<a href="#" class="button">Make card</a>
-</div>
-<div class="card">
-	<div class="message">
-		<h2>{{card.to}},</h2>
-		<p>{{card.messageText}}</p>
-		<h2 class="bottom-heading">{{card.from}}</h2>
+<div class="content recieved">
+	<div class="text">
+		<img src="img/icon-recieved.jpg" />
+		<h1>{{card.from}} made you a card and donated {{amount}} in your name to Chrysalis!</h1>
+		<a href="#" class="button">Make card</a>
 	</div>
-	<div class="logo-bar">
-		<img src="img/chrysalis_logo.png" />
+	<div class="card">
+		<div class="message">
+			<h2>{{card.to}},</h2>
+			<p>{{card.messageText}}</p>
+			<h2 class="bottom-heading">{{card.from}}</h2>
+		</div>
+		<div class="logo-bar">
+			<img src="img/chrysalis_logo.png" />
+		</div >
+		<div class="drawing" style="background-image:url(img/drawings/{{card.image._id}}{{card.image.extension}})"/></div>
 	</div>
-	<img src="img/drawings/{{card.image._id}}{{card.image.extension}}" />
 </div>
