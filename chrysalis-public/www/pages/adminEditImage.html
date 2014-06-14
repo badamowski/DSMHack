@@ -20,5 +20,5 @@
 
 <div class="tags">
   <a ng-repeat="tag in image.tags" href="#" class="tag" ng-click="removeTag(tag, $event)">{{tag.name}}</a>
-  <a href="#" class="add-tag" ng-click="addNewTag($event)">New tag</a><input ng-model="image.newTagName" type="text" >
+  <a href="#" class="add-tag" ng-click="addNewTag($event)">New tag</a><input ng-model="image.newTagName" type="text">
 </div>

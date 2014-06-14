@@ -245,35 +245,37 @@ app.config(function($routeProvider) {
 
 		$scope.addNewTag = function(message, $event){
 			$event.preventDefault();
-
-			if(!message.tags){
-				message.tags = [];
-			}
-			$http.get("api/tags/name/" + message.newTagName)
-				.success(function(data){
-					if(data.length <= 0){
-						var newTag = {"name" : message.newTagName};
-						$http.post("api/tags", newTag).success(function(data) {
-							message.tags.push(data);
-							$http.post("api/messages/update/" + message._id, message).success(function(data) {
-								
+			if(message.newTagName && message.newTagName.trim()!=""){
+				message.newTagName = message.newTagName.trim();
+				if(!message.tags){
+					message.tags = [];
+				}
+				$http.get("api/tags/name/" + message.newTagName)
+					.success(function(data){
+						if(data.length <= 0){
+							var newTag = {"name" : message.newTagName};
+							$http.post("api/tags", newTag).success(function(data) {
+								message.tags.push(data);
+								$http.post("api/messages/update/" + message._id, message).success(function(data) {
+									
+								});
 							});
-						});
-					}else{
-						var contains = false;
-						angular.forEach(message.tags, function(tag){
-							if(tag._id == data[0]._id){
-								contains = true;
+						}else{
+							var contains = false;
+							angular.forEach(message.tags, function(tag){
+								if(tag._id == data[0]._id){
+									contains = true;
+								}
+							});
+							if (!contains) {
+								message.tags.push(data[0]);
+								$http.post("api/messages/update/" + message._id, message).success(function(data) {
+									
+								});
 							}
-						});
-						if (!contains) {
-							message.tags.push(data[0]);
-							$http.post("api/messages/update/" + message._id, message).success(function(data) {
-								
-							});
 						}
-					}
-				});
+					});
+			}
 		};
 
 		$scope.goToMessages = function($event){
@@ -377,32 +379,35 @@ app.config(function($routeProvider) {
 
 		$scope.addNewTag = function($event){
 			$event.preventDefault();
-			if(!$scope.image.tags){
-				$scope.image.tags = [];
-			}
-			$http.get("api/tags/name/" + $scope.image.newTagName)
-				.success(function(data){
-					if(data.length <= 0){
-						var newTag = {"name" : $scope.image.newTagName};
-						$http.post("api/tags", newTag).success(function(data) {
-							$scope.image.tags.push(data);
-							$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
+			if($scope.image.newTagName && $scope.image.newTagName.trim()!=""){
+				$scope.image.newTagName = $scope.image.newTagName.trim();
+				if(!$scope.image.tags){
+					$scope.image.tags = [];
+				}
+				$http.get("api/tags/name/" + $scope.image.newTagName)
+					.success(function(data){
+						if(data.length <= 0){
+							var newTag = {"name" : $scope.image.newTagName};
+							$http.post("api/tags", newTag).success(function(data) {
+								$scope.image.tags.push(data);
+								$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
+								});
 							});
-						});
-					}else{
-						var contains = false;
-						angular.forEach($scope.image.tags, function(tag){
-							if(tag._id == data[0]._id){
-								contains = true;
+						}else{
+							var contains = false;
+							angular.forEach($scope.image.tags, function(tag){
+								if(tag._id == data[0]._id){
+									contains = true;
+								}
+							});
+							if (!contains) {
+								$scope.image.tags.push(data[0]);
+								$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
+								});
 							}
-						});
-						if (!contains) {
-							$scope.image.tags.push(data[0]);
-							$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
-							});
 						}
-					}
-				});
+					});
+				}
 		};
 
 		$scope.goToMessages = function($event){
