@@ -262,5 +262,13 @@ app.config(function($routeProvider) {
 					}
 				});
 		};
+
+		$scope.goToMessages = function($event){
+			$event.preventDefault();
+		};
+		$scope.goToImages = function($event){
+			$event.preventDefault();
+			$location.path('/admin/images');
+		};
 	}]
 );
