@@ -503,41 +503,43 @@ a.submit {
 /* line 39, ../sass/pages/_card.scss */
 .card .message {
   float: right;
-  width: 400px;
+  width: 40%;
+  min-width: 300px;
   background: white;
   position: relative;
   z-index: 90;
   height: 100%;
   padding: 50px 40px 30px;
 }
-/* line 47, ../sass/pages/_card.scss */
+/* line 48, ../sass/pages/_card.scss */
 .card .message p {
   line-height: 1.4em;
   font-size: 1.2em;
 }
-/* line 51, ../sass/pages/_card.scss */
+/* line 52, ../sass/pages/_card.scss */
 .card .message h2 {
   color: #5e6300;
   font-size: 2em;
   font-weight: normal;
   margin-bottom: 20px;
 }
-/* line 57, ../sass/pages/_card.scss */
+/* line 58, ../sass/pages/_card.scss */
 .card .message h2.bottom-heading {
   margin-top: 25px;
 }
-/* line 61, ../sass/pages/_card.scss */
+/* line 62, ../sass/pages/_card.scss */
 .card .logo-bar {
   clear: both;
   background: #b0ba25;
   float: right;
-  width: 400px;
+  width: 40%;
+  min-width: 300px;
   height: auto;
   position: relative;
   z-index: 90;
   padding: 10px 0;
 }
-/* line 70, ../sass/pages/_card.scss */
+/* line 72, ../sass/pages/_card.scss */
 .card .logo-bar img {
   position: relative;
   width: 47px;
@@ -545,15 +547,24 @@ a.submit {
   margin: 0 auto;
   display: block;
 }
-/* line 79, ../sass/pages/_card.scss */
+/* line 80, ../sass/pages/_card.scss */
+.card .drawing {
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+}
+/* line 89, ../sass/pages/_card.scss */
 .card.vert img {
   position: relative;
 }
-/* line 82, ../sass/pages/_card.scss */
+/* line 92, ../sass/pages/_card.scss */
 .card.vert .message {
   border-bottom: 4px solid #d7d7d7;
 }
-/* line 85, ../sass/pages/_card.scss */
+/* line 95, ../sass/pages/_card.scss */
 .card.vert .message, .card.vert .logo-bar {
   float: none;
   width: 100%;
@@ -561,42 +572,42 @@ a.submit {
 
 /* Media Quieres */
 @media all and (max-width: 980px) {
-  /* line 98, ../sass/pages/_card.scss */
+  /* line 108, ../sass/pages/_card.scss */
   .to-from .information {
     width: 80%;
   }
 }
 @media all and (max-width: 780px) {
-  /* line 105, ../sass/pages/_card.scss */
+  /* line 115, ../sass/pages/_card.scss */
   .to-from {
     width: 70%;
     margin: 0 auto 20px;
   }
-  /* line 108, ../sass/pages/_card.scss */
+  /* line 118, ../sass/pages/_card.scss */
   .to-from .information {
     width: 100%;
   }
-  /* line 110, ../sass/pages/_card.scss */
+  /* line 120, ../sass/pages/_card.scss */
   .to-from .information p {
     float: none;
   }
-  /* line 114, ../sass/pages/_card.scss */
+  /* line 124, ../sass/pages/_card.scss */
   .to-from .information form input {
     float: none;
     display: block;
     margin-bottom: 10px;
     width: 45%;
   }
-  /* line 120, ../sass/pages/_card.scss */
+  /* line 130, ../sass/pages/_card.scss */
   .to-from .information form .first-name {
     float: left;
   }
-  /* line 123, ../sass/pages/_card.scss */
+  /* line 133, ../sass/pages/_card.scss */
   .to-from .information form .email {
     clear: both;
     width: 94%;
   }
-  /* line 130, ../sass/pages/_card.scss */
+  /* line 140, ../sass/pages/_card.scss */
   .to-from a.submit {
     display: block;
     float: none;
@@ -644,62 +655,65 @@ a.submit {
 }
 
 /* line 38, ../sass/pages/_admin.scss */
-.admin-page .header-bottom {
-  overflow: hidden;
-  padding: 0;
+.admin-page .content {
+  padding: 0 20px 0 20px;
 }
-/* line 41, ../sass/pages/_admin.scss */
-.admin-page .header-bottom p {
-  padding: 10px 0 0;
+/* line 40, ../sass/pages/_admin.scss */
+.admin-page .content h1 {
+  padding-top: 40px;
 }
 
-/* line 47, ../sass/pages/_admin.scss */
+/* line 46, ../sass/pages/_admin.scss */
 .tabs {
   float: right;
 }
-/* line 49, ../sass/pages/_admin.scss */
+/* line 48, ../sass/pages/_admin.scss */
 .tabs .tab {
   float: left;
   width: 120px;
   padding: 10px 10px;
   text-align: center;
-  background: #dfe747;
+  background: #d7d7d7;
 }
-/* line 55, ../sass/pages/_admin.scss */
+/* line 54, ../sass/pages/_admin.scss */
 .tabs .tab a {
   text-transform: lowercase;
   color: #5e6300;
   font-size: .8em;
   text-decoration: none;
 }
-/* line 61, ../sass/pages/_admin.scss */
+/* line 60, ../sass/pages/_admin.scss */
 .tabs .tab.active {
-  background: white;
+  background: #89901b;
+}
+/* line 62, ../sass/pages/_admin.scss */
+.tabs .tab.active a {
+  color: white;
 }
 
-/* line 66, ../sass/pages/_admin.scss */
+/* line 68, ../sass/pages/_admin.scss */
 .options {
   margin-bottom: 50px;
 }
-/* line 68, ../sass/pages/_admin.scss */
+/* line 70, ../sass/pages/_admin.scss */
 .options p {
   float: left;
   color: #5e6300;
   margin-right: 10px;
 }
-/* line 73, ../sass/pages/_admin.scss */
+/* line 75, ../sass/pages/_admin.scss */
 .options select {
   float: left;
   margin-right: 20px;
 }
-/* line 77, ../sass/pages/_admin.scss */
+/* line 79, ../sass/pages/_admin.scss */
 .options .delete {
   color: #333333;
   text-decoration: none;
   margin-right: 20px;
   color: #fcb31c;
 }
-/* line 82, ../sass/pages/_admin.scss */
+/* line 84, ../sass/pages/_admin.scss */
 .options .delete:before {
   content: '';
   background: url(../img/icon-delete.jpg) no-repeat top left;
@@ -708,14 +722,14 @@ a.submit {
   display: inline-block;
   padding-right: 5px;
 }
-/* line 91, ../sass/pages/_admin.scss */
+/* line 93, ../sass/pages/_admin.scss */
 .options .unpublish {
   color: #333333;
   margin-right: 20px;
   text-decoration: none;
   color: #fcb31c;
 }
-/* line 96, ../sass/pages/_admin.scss */
+/* line 98, ../sass/pages/_admin.scss */
 .options .unpublish:before {
   content: '';
   background: url(../img/icon-unpublish.jpg) no-repeat top left;
@@ -724,35 +738,35 @@ a.submit {
   display: inline-block;
   padding-right: 5px;
 }
-/* line 105, ../sass/pages/_admin.scss */
+/* line 107, ../sass/pages/_admin.scss */
 .options .new-message {
   clear: both;
   width: 300px;
   margin: 40px 0 0;
 }
-/* line 109, ../sass/pages/_admin.scss */
+/* line 111, ../sass/pages/_admin.scss */
 .options .new-message h2 {
   color: #b0ba25;
   margin-bottom: 20px;
 }
-/* line 113, ../sass/pages/_admin.scss */
+/* line 115, ../sass/pages/_admin.scss */
 .options .new-message textarea {
   width: 100%;
   height: 100px;
   margin-bottom: 20px;
 }
-/* line 118, ../sass/pages/_admin.scss */
+/* line 120, ../sass/pages/_admin.scss */
 .options .new-message .button {
   clear: both;
 }
-/* line 122, ../sass/pages/_admin.scss */
+/* line 124, ../sass/pages/_admin.scss */
 .options .edit {
   color: #333333;
   margin-right: 20px;
   text-decoration: none;
   color: #fcb31c;
 }
-/* line 127, ../sass/pages/_admin.scss */
+/* line 129, ../sass/pages/_admin.scss */
 .options .edit:before {
   content: '';
   background: url(../img/icon-editmode.jpg) no-repeat top left;
@@ -761,14 +775,14 @@ a.submit {
   display: inline-block;
   padding-right: 5px;
 }
-/* line 136, ../sass/pages/_admin.scss */
+/* line 138, ../sass/pages/_admin.scss */
 .options .view-unpublished {
   color: #333333;
   margin-right: 20px;
   text-decoration: none;
   color: #fcb31c;
 }
-/* line 141, ../sass/pages/_admin.scss */
+/* line 143, ../sass/pages/_admin.scss */
 .options .view-unpublished:before {
   content: '';
   background: url(../img/icon-ViewUnpublished.png) no-repeat top left;
@@ -778,50 +792,50 @@ a.submit {
   padding-right: 5px;
 }
 
-/* line 152, ../sass/pages/_admin.scss */
+/* line 154, ../sass/pages/_admin.scss */
 .flash-message {
   background: #f3776f;
   padding: 10px 0;
 }
-/* line 155, ../sass/pages/_admin.scss */
+/* line 157, ../sass/pages/_admin.scss */
 .flash-message p {
   color: white;
   text-align: center;
   text-transform: uppercase;
 }
 
-/* line 161, ../sass/pages/_admin.scss */
-.message {
+/* line 163, ../sass/pages/_admin.scss */
+.admin-page .message {
   clear: both;
   margin-bottom: 50px;
   max-width: 300px;
 }
-/* line 165, ../sass/pages/_admin.scss */
-.message input[type="checkbox"] {
+/* line 167, ../sass/pages/_admin.scss */
+.admin-page .message input[type="checkbox"] {
   float: left;
   margin-right: 5px;
 }
-/* line 169, ../sass/pages/_admin.scss */
-.message p {
+/* line 171, ../sass/pages/_admin.scss */
+.admin-page .message p {
   padding-left: 21px;
   border-bottom: 1px solid #d7d7d7;
   padding-bottom: 10px;
   margin-bottom: 5px;
 }
 
-/* line 179, ../sass/pages/_admin.scss */
+/* line 181, ../sass/pages/_admin.scss */
 .tag, .add-tag {
   font-size: .8em;
 }
 
-/* line 182, ../sass/pages/_admin.scss */
+/* line 184, ../sass/pages/_admin.scss */
 .tag {
   color: #333333;
   margin-right: 20px;
   text-decoration: none;
   color: #fcb31c;
 }
-/* line 187, ../sass/pages/_admin.scss */
+/* line 189, ../sass/pages/_admin.scss */
 .tag:before {
   content: '';
   background: url(../img/icon-delete.jpg) no-repeat top left;
@@ -831,14 +845,14 @@ a.submit {
   padding-right: 5px;
 }
 
-/* line 196, ../sass/pages/_admin.scss */
+/* line 198, ../sass/pages/_admin.scss */
 .add-tag {
   color: #333333;
   margin-right: 20px;
   text-decoration: none;
   color: #fcb31c;
 }
-/* line 201, ../sass/pages/_admin.scss */
+/* line 203, ../sass/pages/_admin.scss */
 .add-tag:before {
   content: '';
   background: url(../img/icon-add.jpg) no-repeat top left;
@@ -848,30 +862,30 @@ a.submit {
   padding-right: 5px;
 }
 
-/* line 210, ../sass/pages/_admin.scss */
+/* line 212, ../sass/pages/_admin.scss */
 .tags {
   float: left;
   width: 30%;
 }
-/* line 213, ../sass/pages/_admin.scss */
+/* line 215, ../sass/pages/_admin.scss */
 .tags .tag {
   float: none;
   display: block;
   margin-bottom: 5px;
 }
-/* line 218, ../sass/pages/_admin.scss */
+/* line 220, ../sass/pages/_admin.scss */
 .tags input {
   display: block;
   float: none;
   margin-top: 5px;
 }
 
-/* line 226, ../sass/pages/_admin.scss */
+/* line 228, ../sass/pages/_admin.scss */
 .admin-page .cards a.selected {
   border: 8px solid #b0ba25;
 }
 
-/* line 232, ../sass/pages/_admin.scss */
+/* line 234, ../sass/pages/_admin.scss */
 .card-preview {
   width: 65%;
   float: right;
@@ -881,33 +895,33 @@ a.submit {
   border-radius: 12px;
   border: 8px solid #d7d7d7;
 }
-/* line 237, ../sass/pages/_admin.scss */
+/* line 239, ../sass/pages/_admin.scss */
 .card-preview img {
   width: 100%;
 }
 
-/* line 244, ../sass/pages/_admin.scss */
+/* line 246, ../sass/pages/_admin.scss */
 .admin-body {
   background: #b0ba25;
   text-align: center;
   padding-top: 48px;
 }
-/* line 249, ../sass/pages/_admin.scss */
+/* line 251, ../sass/pages/_admin.scss */
 .admin-body h2 {
   font-size: 150%;
   color: #444;
   font-weight: 400;
 }
-/* line 255, ../sass/pages/_admin.scss */
+/* line 257, ../sass/pages/_admin.scss */
 .admin-body img {
   width: 186px;
 }
-/* line 259, ../sass/pages/_admin.scss */
+/* line 261, ../sass/pages/_admin.scss */
 .admin-body form {
   max-width: 300px;
   margin: 2em auto;
 }
-/* line 263, ../sass/pages/_admin.scss */
+/* line 265, ../sass/pages/_admin.scss */
 .admin-body input {
   display: block;
   float: none;
@@ -915,34 +929,34 @@ a.submit {
   margin: 1em 0;
   padding: 0.5em 0.75em;
 }
-/* line 271, ../sass/pages/_admin.scss */
+/* line 273, ../sass/pages/_admin.scss */
 .admin-body .button {
   width: auto;
   margin: 0 auto;
 }
 
-/* line 278, ../sass/pages/_admin.scss */
+/* line 280, ../sass/pages/_admin.scss */
 .controls {
   margin-bottom: 2em;
 }
-/* line 280, ../sass/pages/_admin.scss */
+/* line 282, ../sass/pages/_admin.scss */
 .controls label {
   font-size: 115%;
   color: #5e6300;
 }
-/* line 284, ../sass/pages/_admin.scss */
+/* line 286, ../sass/pages/_admin.scss */
 .controls a {
   color: #fcb31c;
   text-decoration: none;
   padding: 0.5em 1em;
   font-size: 105%;
 }
-/* line 291, ../sass/pages/_admin.scss */
+/* line 293, ../sass/pages/_admin.scss */
 .controls a:hover, .controls a:focus {
   color: #e29903;
 }
 
-/* line 297, ../sass/pages/_admin.scss */
+/* line 299, ../sass/pages/_admin.scss */
 .error {
   display: none;
   padding: 1em;
@@ -950,39 +964,39 @@ a.submit {
   background: #f16157;
   color: #fff;
 }
-/* line 304, ../sass/pages/_admin.scss */
+/* line 306, ../sass/pages/_admin.scss */
 .error.show {
   display: block;
 }
 
 @media all and (max-width: 550px) {
-  /* line 310, ../sass/pages/_admin.scss */
+  /* line 312, ../sass/pages/_admin.scss */
   .options {
     margin-bottom: 50px;
     overflow: hidden;
   }
-  /* line 313, ../sass/pages/_admin.scss */
+  /* line 315, ../sass/pages/_admin.scss */
   .options p {
     margin-bottom: 10px;
   }
-  /* line 316, ../sass/pages/_admin.scss */
+  /* line 318, ../sass/pages/_admin.scss */
   .options .delete, .options .unpublish {
     clear: left;
     display: block;
     margin-bottom: 10px;
   }
-  /* line 321, ../sass/pages/_admin.scss */
+  /* line 323, ../sass/pages/_admin.scss */
   .options .button {
     display: block;
     float: left;
   }
 
-  /* line 326, ../sass/pages/_admin.scss */
+  /* line 328, ../sass/pages/_admin.scss */
   .cards {
     clear: both;
   }
 
-  /* line 330, ../sass/pages/_admin.scss */
+  /* line 332, ../sass/pages/_admin.scss */
   .tags, .card-preview {
     float: none;
     width: 100%;

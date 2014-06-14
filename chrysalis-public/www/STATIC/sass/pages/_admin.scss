@@ -35,12 +35,11 @@
 
 
 .admin-page {
-	.header-bottom {
-		overflow: hidden;
-		 padding: 0;
-		 p {
-			padding: 10px 0 0;
-		 }
+	.content {
+		padding: 0 20px 0 20px;
+		h1 {
+			padding-top: 40px;
+		}
 	}
 }
 
@@ -51,7 +50,7 @@
 		width: 120px;
 		padding: 10px 10px;
 		text-align: center;
-		background: $lightest-green;
+		background: $gray;
 		a {
 			text-transform: lowercase;
 			color: $darkest-green;
@@ -59,7 +58,10 @@
 			text-decoration: none;
 		}
 		&.active {
-			background: $white;
+			background: $dark-green;
+			a {
+				color: $white;
+			}
 		}
 	}
 }
@@ -158,6 +160,23 @@
 		text-transform: uppercase;
 	}
 }
+.admin-page .message {
+	clear: both;
+	margin-bottom: 50px;
+	max-width: 300px;
+	input[type="checkbox"] {
+		float: left;
+		margin-right: 5px;
+	}
+	p {
+		padding-left: 21px;
+		border-bottom: 1px solid $gray;
+		padding-bottom: 10px;
+		margin-bottom: 5px;
+	}
+	
+}
+
 
 .tag, .add-tag {
 	font-size: .8em;
@@ -314,14 +333,5 @@
 		float: none;
 		width: 100%;
 		margin-bottom: 20px;
-	}
-}
-
-.upload {
-	input[type="file"] {
-		border: none;
-	}
-	input {
-		display: block;
 	}
 }
