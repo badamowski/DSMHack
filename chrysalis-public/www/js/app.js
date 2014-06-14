@@ -178,34 +178,32 @@ app.config(function($routeProvider) {
 			$scope.showNewMessageDiv = true;
 		};
 
-		$scope.createNewMessage = function(){
+		$scope.createNewMessage = function($event){
+			$event.preventDefault();
 			$http.post("api/messages", $scope.newMessage).success(function(data) {
-				$location.path('/admin/messages');
+				$scope.messages.push(data);
+				$scope.showNewMessageDiv = false;
 			});
 		};
 		$scope.toggleSelection = function(message) {
-		    var idx = $scope.selection.indexOf(message._id);
+		    var idx = $scope.selection.indexOf(message);
 		    if (idx > -1) {
 		      $scope.selection.splice(idx, 1);
 		    } else {
-		      $scope.selection.push(message._id);
+		      $scope.selection.push(message);
 		    }
 		  };
 
-		$scope.deleteSelectedMessages = function(){
+		$scope.deleteSelectedMessages = function($event){
+			$event.preventDefault();
 
-    		var promises = [];
-    		var defer = $q.defer();
-
-			angular.forEach($scope.selection, function(messageIdToDelete) {
-				promises.push($http.get("api/messages/delete/" + messageIdToDelete));
+			angular.forEach($scope.selection, function(messageToDelete) {
+				var idx = $scope.messages.indexOf(messageToDelete);
+				if (idx > -1) {
+					$scope.messages.splice(idx, 1);
+					$http.get("api/messages/delete/" + messageToDelete._id);
+				}
 			});
-
-			$q.all(promises).then(function(){
-				$location.path('/admin/messages');	
-			});
-
-			return defer;
 		};
 
 		$scope.containsTag = function(tag) {
@@ -225,17 +223,21 @@ app.config(function($routeProvider) {
 			};
 		};
 
-		$scope.removeTag = function(message, tag){
+		$scope.removeTag = function(message, tag, $event){
+			$event.preventDefault();
+
 			var idx = message.tags.indexOf(tag);
 			if (idx > -1) {
 				message.tags.splice(idx, 1);
 				$http.post("api/messages/update/" + message._id, message).success(function(data) {
-					$location.path('/admin/messages');
+					
 				});
 			}
 		};
 
-		$scope.addNewTag = function(message){
+		$scope.addNewTag = function(message, $event){
+			$event.preventDefault();
+
 			if(!message.tags){
 				message.tags = [];
 			}
@@ -246,7 +248,7 @@ app.config(function($routeProvider) {
 						$http.post("api/tags", newTag).success(function(data) {
 							message.tags.push(data);
 							$http.post("api/messages/update/" + message._id, message).success(function(data) {
-								$location.path('/admin/messages');
+								
 							});
 						});
 					}else{
@@ -254,12 +256,11 @@ app.config(function($routeProvider) {
 						if (idx <= -1) {
 							message.tags.push(data[0]);
 							$http.post("api/messages/update/" + message._id, message).success(function(data) {
-								$location.path('/admin/messages');
+								
 							});
 						}
 					}
 				});
-			$location.path('/admin/messages');
 		};
 	}]
 );
