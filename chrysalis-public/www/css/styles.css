@@ -348,7 +348,8 @@ a.submit {
   border: 4px solid #d7d7d7;
   position: relative;
   overflow: hidden;
-  margin-bottom: 50px; }
+  margin-bottom: 50px; 
+ min-height: 500px;}
   .card img {
     width: 100%;
     position: absolute;
@@ -395,6 +396,14 @@ a.submit {
   .card.vert .message, .card.vert .logo-bar {
     float: none;
     width: 100%; }
+  .card .drawing {
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+}
 
 .checked .has-error {
   border: 1px solid #f3776f; }

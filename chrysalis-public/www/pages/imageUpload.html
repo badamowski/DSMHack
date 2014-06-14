@@ -2,7 +2,7 @@
 
 <div class="upload">
 	<form action="/api/images/upload" method="post" enctype="multipart/form-data">
-		<input type="file" name="imageUpload">
+		<input type="file" name="imageUpload" required>
 		<input type="text" name="name" placeholder="image name">
 		<input type="text" name="artist" placeholder="artist name">
 		<input type="submit" class="button">
