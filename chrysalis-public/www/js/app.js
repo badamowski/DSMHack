@@ -166,8 +166,14 @@ app.config(function($routeProvider) {
 	
 }])
 
-.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$location", "$q",
-	function($scope, MessageList, Tags, $http, $location, $q) {
+.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$location", "$q", "$window",
+	function($scope, MessageList, Tags, $http, $location, $q, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
+
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
 		$scope.newMessage = {};
@@ -288,8 +294,14 @@ app.config(function($routeProvider) {
 	}]
 )
 
-.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location",
-	function($scope, ImageList, Tags, $http, $location) {
+.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location", "$window",
+	function($scope, ImageList, Tags, $http, $location, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
+
 		$scope.images = ImageList.query();
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
@@ -348,8 +360,14 @@ app.config(function($routeProvider) {
 	}]
 )
 
-.controller("AdminEditImage", ["$scope", "$routeParams", "Tags", "$http", "$location",
-	function($scope, $routeParams, Tags, $http, $location) {
+.controller("AdminEditImage", ["$scope", "$routeParams", "Tags", "$http", "$location", "$window",
+	function($scope, $routeParams, Tags, $http, $location, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
+
 		$http.get("api/images/" + $routeParams.id).success(function(data){
 			$scope.image = data;
 		});
