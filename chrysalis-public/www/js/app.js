@@ -31,6 +31,14 @@ app.config(function($routeProvider) {
 		controller: "Ecard",
 		templateUrl: "pages/ecard.html"
 	})
+	.when("/admin/images", {
+		controller: "AdminImages",
+		templateUrl: "pages/adminImages.html"
+	})
+	.when("/admin/image/edit/:id", {
+		controller: "AdminEditImage",
+		templateUrl: "pages/adminEditImage.html"
+	})
 	.when("/admin/image/upload", {
 		controller: "Upload",
 		templateUrl: "pages/imageUpload.html"
@@ -262,4 +270,109 @@ app.config(function($routeProvider) {
 			$location.path('/admin/messages');
 		};
 	}]
+)
+
+.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location",
+	function($scope, ImageList, Tags, $http, $location) {
+		$scope.images = ImageList.query();
+		$scope.showAdminTabs = true;
+		$scope.selection = [];
+		$scope.newImage = {};
+		$location.path('/admin/images');
+		$scope.tag = {
+			name: "General Occasion"
+		};
+		Tags.query().$promise.then(function(tags) {
+			tags.unshift($scope.tag);
+			$scope.tags = tags;
+		});
+		
+		$scope.selectImage = function(image) {
+			$location.path("/admin/image/edit/" + image._id);
+		};
+
+		$scope.uploadImage = function($event) {
+			$event.preventDefault();
+			$location.path("/admin/image/upload");
+		};
+
+		$scope.toggleSelection = function(image) {
+		    var idx = $scope.selection.indexOf(image._id);
+		    if (idx > -1) {
+		      $scope.selection.splice(idx, 1);
+		    } else {
+		      $scope.selection.push(image._id);
+		    }
+		  };
+
+		$scope.containsTag = function(tag) {
+			return function(image) {
+				var contains = false;
+
+				if ($scope.tag == "" || $scope.tag && $scope.tag.name == "General Occasion") {
+					return true;
+				}
+
+				angular.forEach(image.tags, function(imagetag) {
+					if (imagetag.name == $scope.tag.name) {
+						contains = true;
+					}
+				});
+				return contains;
+			};
+		};
+	}]
+)
+
+.controller("AdminEditImage", ["$scope", "$routeParams", "Tags", "$http", "$location",
+	function($scope, $routeParams, Tags, $http, $location) {
+		$http.get("api/images/" + $routeParams.id).success(function(data){
+			$scope.image = data;
+		});
+
+		$scope.deleteImage = function($event){
+			$event.preventDefault();
+			$http.get("api/images/delete/" + $scope.image._id).success(function(data){
+				$location.path('/admin/images');
+			});
+		};
+
+		$scope.removeTag = function(tag, $event){
+			$event.preventDefault();
+			var idx = $scope.image.tags.indexOf(tag);
+			if (idx > -1) {
+				$scope.image.tags.splice(idx, 1);
+				$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
+					
+				});
+			}
+		};
+
+		$scope.addNewTag = function($event){
+			$event.preventDefault();
+			if(!$scope.image.tags){
+				$scope.image.tags = [];
+			}
+			$http.get("api/tags/name/" + $scope.image.newTagName)
+				.success(function(data){
+					if(data.length <= 0){
+						var newTag = {"name" : $scope.image.newTagName};
+						$http.post("api/tags", newTag).success(function(data) {
+							$scope.image.tags.push(data);
+							$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
+							});
+						});
+					}else{
+						var idx = $scope.image.tags.indexOf(data[0]);
+						if (idx <= -1) {
+							$scope.image.tags.push(data[0]);
+							$http.post("api/image/update/" + $scope.image._id, $scope.image).success(function(data) {
+							});
+						}
+					}
+				});
+		};
+	}]
 );
+
+
