@@ -13,7 +13,6 @@
 	<p>Sort by</p>
 	<select name="" id="" ng-model="tag" ng-options="tag.name for tag in tags" ></select>
 	<a ng-click="deleteSelectedMessages($event)" href="#" class="delete">delete</a>
-	<a href="#" class="unpublish">un-publish</a>
 	<button ng-click="showNewMessage()" ng-show="!showNewMessageDiv" class="button">New Message</button>
 
 	<div ng-show="showNewMessageDiv" class="new-message">
