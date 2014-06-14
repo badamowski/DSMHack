@@ -129,7 +129,7 @@ app.post("/api/images/upload", function(req, res){
           }
           res.send(newImage);
           //NEED TO CHANGE LINK TO SINGLE IMAGE EDIT
-          res.redirect("/#/admin/messages");
+          res.redirect("/#/admin/image/edit/:id");
         });
       });
     }
