@@ -1,16 +1,25 @@
+<div class="tabs">
+	<div class="tab active">
+		<a ng-click="goToMessages($event)" href="#">Messages</a>
+	</div>
+	<div ng-click="goToImages($event)" class="tab">
+		<a href="#">Images</a>
+	</div>
+</div>
+
 <h1>Messages</h1>
 
 <div class="options">
 	<p>Sort by</p>
 	<select name="" id="" ng-model="tag" ng-options="tag.name for tag in tags" ></select>
-	<a ng-click="deleteSelectedMessages()" href="#" class="delete">delete</a>
+	<a ng-click="deleteSelectedMessages($event)" href="#" class="delete">delete</a>
 	<a href="#" class="unpublish">un-publish</a>
 	<button ng-click="showNewMessage()" ng-show="!showNewMessageDiv" class="button">New Message</button>
 
 	<div ng-show="showNewMessageDiv" class="new-message">
 		<h2>New message</h2>
 		<textarea ng-model="newMessage.text"></textarea>
-		<a ng-click="createNewMessage()" href="#" class="button">Create Message</a>
+		<a ng-click="createNewMessage($event)" href="#" class="button">Create Message</a>
 	</div>
 </div>
 
@@ -20,7 +29,7 @@
     	ng-click="toggleSelection(message)">
 	<div class="message-text">
 		<p>{{message.text}}</p>
-		<a ng-repeat="tag in message.tags" href="#" class="tag" ng-click="removeTag(message, tag)">{{tag.name}}</a>
-		<a href="#" class="add-tag" ng-click="addNewTag(message)">New tag</a><input ng-model="message.newTagName" type="text" >
+		<a ng-repeat="tag in message.tags" href="#" class="tag" ng-click="removeTag(message, tag, $event)">{{tag.name}}</a>
+		<a href="#" class="add-tag" ng-click="addNewTag(message, $event)">New tag</a><input ng-model="message.newTagName" type="text" >
 	</div>
 </div>
