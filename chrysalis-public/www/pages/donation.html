@@ -1,13 +1,10 @@
 <h1>Donation</h1>
 <p>Select your donation amount</p>
-<!-- <form class="donation"> for the Scholten Experience -->
-<form class="donation" style="font-size: 14px;">
-	<div><label for="paypal-1"><input id="paypal-1" type="radio" name="amount" value="3543KKBMJT9H4" ng-model="paypal">$10</label></div>
-	<div><label for="paypal-2"><input id="paypal-2" type="radio" name="amount" value="PEVMEUKWBG9R8" ng-model="paypal">$25</label></div>
-	<div><label for="paypal-3"><input id="paypal-3" type="radio" name="amount" value="RRWKNVLT7RBWG" ng-model="paypal">$50</label></div>
-	<div><label for="paypal-4"><input id="paypal-4" type="radio" name="amount" value="5VYV4XB5D3NV2" ng-model="paypal">other</label></div>
-	<!-- live ID, not sandbox -->
-	<div><label for="paypal-5"><input id="paypal-5" type="radio" name="amount" value="XFCA4SDMNUULU" ng-model="paypal">You've Gotta Be Scholten Me!</label></div>
+<form class="donation">
+	<div><label for="paypal-1" class="donate-form"><input id="paypal-1" type="radio" name="amount" value="3543KKBMJT9H4" ng-model="paypal">$10</label></div>
+	<div><label for="paypal-2" class="donate-form"><input id="paypal-2" type="radio" name="amount" value="PEVMEUKWBG9R8" ng-model="paypal">$25</label></div>
+	<div><label for="paypal-3" class="donate-form"><input id="paypal-3" type="radio" name="amount" value="RRWKNVLT7RBWG" ng-model="paypal">$50</label></div>
+	<div><label for="paypal-4" class="donate-form"><input id="paypal-4" type="radio" name="amount" value="5VYV4XB5D3NV2" ng-model="paypal">other</label></div>
 </form>
 <div class="how-to-donate">
 	<p>Select how you want to donate.</p>
@@ -21,3 +18,25 @@
 	<!-- <a href="#" class="amazon"><img src="img/payment2.png" /></a>
 	<a href="#" class="dwolla"><img src="img/payment3.png" /></a> -->
 </div>
+
+
+<!-- the prod stuff -->
+<!-- <form class="donation"> for the Scholten Experience -->
+<!-- <form class="donation" style="font-size: 14px;">
+	<div><label for="paypal-1" class="donate-form"><input id="paypal-1" type="radio" name="amount" value="QHFD4GCDL3WSW" ng-model="paypal">$10</label></div>
+	<div><label for="paypal-2" class="donate-form"><input id="paypal-2" type="radio" name="amount" value="L2TVPVEJJZB62" ng-model="paypal">$25</label></div>
+	<div><label for="paypal-3" class="donate-form"><input id="paypal-3" type="radio" name="amount" value="7G98F6WWS6E6J" ng-model="paypal">$50</label></div>
+	<div><label for="paypal-4" class="donate-form"><input id="paypal-4" type="radio" name="amount" value="XANS3NDZYUTM8" ng-model="paypal">other</label></div>
+	<div><label for="paypal-5" class="donate-form"><input id="paypal-5" type="radio" name="amount" value="XFCA4SDMNUULU" ng-model="paypal">You've Gotta Be Scholten Me!</label></div>
+</form>
+
+<div class="how-to-donate">
+	<p>Select how you want to donate.</p>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="QHFD4GCDL3WSW">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form>
+
+</div> -->

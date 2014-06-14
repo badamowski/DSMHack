@@ -220,6 +220,12 @@ form input {
     border-right: 1px solid #89901b;
     padding-right: .5em; }
 
+.donate-form {
+  left: 0;
+  width: auto;
+  height: auto;
+  position: relative; }
+
 .messages {
   margin: 20px 0; }
   .messages a {
@@ -396,8 +402,7 @@ a.submit {
     position: absolute;
     top: 0;
     left: 0;
-    background-size: cover;
-    background-position: center center; }
+    background-size: cover; }
   .card.vert img {
     position: relative; }
   .card.vert .message {
@@ -721,6 +726,11 @@ form.donation {
   form.donation div {
     float: none;
     margin: 0 0 20px 0; } }
+.donate-form {
+  height: auto;
+  left: 0;
+  width: auto; }
+
 .sent h1 {
   color: #b0ba25;
   text-align: center;
@@ -753,7 +763,7 @@ form.donation {
       float: left; }
     .recieved .text h1 {
       margin-right: 10px;
-      font-size: 1.4em; }
+      font-size: 1.7em; }
   .recieved .card.vert {
     max-width: 600px;
     margin: 0 auto; }
