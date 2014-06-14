@@ -64,7 +64,7 @@ app.configure(function() {
   app.use(express.static(__dirname + '/chrysalis-public/www'));
   app.use(express.logger());
 });
-
+//LOGIN - UNSECURED
 app.post('/admin/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err) }
@@ -77,16 +77,12 @@ app.post('/admin/login', function(req, res, next) {
     });
   })(req, res, next);
 });
-
+//LOGOUT - UNSECURED
 app.get('/admin/logout', function(req, res){
   req.logout();
   res.redirect('/admin.html');
 });
-
-app.get('/secure', ensureAuthenticated, function(req, res){
-  return res.send("SECURE");
-});
-
+//GET - UNSECURED
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
 app.get("/api/tags/:id", endpoints.tagIdGet);
@@ -97,23 +93,24 @@ app.get("/api/images", endpoints.imageGet);
 app.get("/api/images/:id", endpoints.imageIdGet);
 app.get("/api/messages", endpoints.messageGet);
 app.get("/api/messages/:id", endpoints.messageIdGet);
-app.get("/api/cards/delete/:id", endpoints.cardDelete);
-app.get("/api/messages/delete/:id", endpoints.messageDelete);
-app.get("/api/images/delete/:id", endpoints.imageDelete);
-app.get("/api/tags/delete/:id", endpoints.tagDelete);
-
-
-app.post("/api/tags/update/:id", endpoints.tagUpdate);
-app.post("/api/messages/update/:id", endpoints.messageUpdate);
-app.post("/api/cards/update/:id", endpoints.cardUpdate);
-app.post("/api/images/update/:id", endpoints.imageUpdate);
-app.post("/api/messages", endpoints.messagePost);
-app.post("/api/images", endpoints.imagePost);
+//CARD POST/UPDATE - UNSECURED
 app.post("/api/cards", endpoints.cardPost);
-app.post("/api/tags", endpoints.tagPost);
-app.get("/api/messages", api.messages);
-
-app.post("/api/images/upload", function(req, res){
+app.post("/api/cards/update/:id", endpoints.cardUpdate);
+//DELETE - SECURED
+app.get("/api/cards/delete/:id", ensureAuthenticated, endpoints.cardDelete);
+app.get("/api/messages/delete/:id", ensureAuthenticated, endpoints.messageDelete);
+app.get("/api/images/delete/:id", ensureAuthenticated, endpoints.imageDelete);
+app.get("/api/tags/delete/:id", ensureAuthenticated, endpoints.tagDelete);
+//POSTS & UPDATES - SECURED
+app.post("/api/tags/update/:id", ensureAuthenticated, endpoints.tagUpdate);
+app.post("/api/messages/update/:id", ensureAuthenticated, endpoints.messageUpdate);
+app.post("/api/images/update/:id", ensureAuthenticated, endpoints.imageUpdate);
+app.post("/api/messages", ensureAuthenticated, endpoints.messagePost);
+app.post("/api/images", ensureAuthenticated, endpoints.imagePost);
+app.post("/api/tags", ensureAuthenticated, endpoints.tagPost);
+app.get("/api/messages", ensureAuthenticated, api.messages);
+//IMAGE UPLOAD - SECURED
+app.post("/api/images/upload", ensureAuthenticated, function(req, res){
   var data = req.body;
   data.extension = "." + req.files.imageUpload.name.split(".").pop();
   var newImage = new models.image(req.body);
@@ -138,7 +135,7 @@ app.post("/api/images/upload", function(req, res){
 app.listen(8080, function() {
   console.log("Application started on port 8080!");
 });
-
+//SEND CARD - UNSECURED
 app.get('/api/cards/send/:id', function(req, res){
   models.card.findById(req.params.id, function (err, data) {
     if (!err) {
@@ -146,8 +143,6 @@ app.get('/api/cards/send/:id', function(req, res){
       var senderName = data.from;
       var senderEmail = data.fromEmail;
       var toEmail = data.toEmail;
-
-
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
       var text = "Here is the link to your ecard: " +
@@ -175,10 +170,12 @@ app.get('/api/cards/send/:id', function(req, res){
   }
   });
 });
-
+//IS AUTHENTICATED - UNSECURED
+app.get('/admin/authenticated', function(req, res){
+  return res.send({"authenticated" : req.isAuthenticated()});
+});
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/admin.html');
 }
-

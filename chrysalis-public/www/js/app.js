@@ -166,8 +166,14 @@ app.config(function($routeProvider) {
 	
 }])
 
-.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$location", "$q",
-	function($scope, MessageList, Tags, $http, $location, $q) {
+.controller("AdminMessages", ["$scope", "ImageList", "MessageList", "Tags", "$http", "$location", "$q", "$window",
+	function($scope, ImageList, MessageList, Tags, $http, $location, $q, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
+
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
 		$scope.newMessage = {};
@@ -238,7 +244,28 @@ app.config(function($routeProvider) {
 			if (idx > -1) {
 				message.tags.splice(idx, 1);
 				$http.post("api/messages/update/" + message._id, message).success(function(data) {
-					
+					var tagFound = false;
+					angular.forEach(ImageList.query(), function(image){
+						angular.forEach(image.tags, function(imageTag){
+
+							if(tag._id == imageTag._id){
+								tagFound = true;
+							}
+						});
+					});
+					if(tagFound == false){
+						angular.forEach(MessageList.query(), function(messageFromList){
+							angular.forEach(messageFromList.tags, function(messageTag){
+								if(tag._id == messageTag._id){
+									tagFound = true;
+								}
+							});
+						});
+					}
+					if(tagFound == false){
+						
+						$http.get("api/tags/delete/" + tag._id);
+					}
 				});
 			}
 		};
@@ -288,8 +315,13 @@ app.config(function($routeProvider) {
 	}]
 )
 
-.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location",
-	function($scope, ImageList, Tags, $http, $location) {
+.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location", "$window",
+	function($scope, ImageList, Tags, $http, $location, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
 		$scope.images = ImageList.query();
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
@@ -348,8 +380,14 @@ app.config(function($routeProvider) {
 	}]
 )
 
-.controller("AdminEditImage", ["$scope", "$routeParams", "Tags", "$http", "$location",
-	function($scope, $routeParams, Tags, $http, $location) {
+.controller("AdminEditImage", ["$scope", "$routeParams", "Tags", "ImageList", "MessageList", "$http", "$location", "$window",
+	function($scope, $routeParams, Tags, ImageList, MessageList, $http, $location, $window) {
+		$http.get("admin/authenticated").success(function(data){
+			if(!data.authenticated){
+				$window.location.replace($window.location.origin + "/admin.html");
+			}
+		});
+
 		$http.get("api/images/" + $routeParams.id).success(function(data){
 			$scope.image = data;
 		});
@@ -367,7 +405,28 @@ app.config(function($routeProvider) {
 			if (idx > -1) {
 				$scope.image.tags.splice(idx, 1);
 				$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
-					
+					var tagFound = false;
+					angular.forEach(ImageList.query(), function(image){
+						angular.forEach(image.tags, function(imageTag){
+
+							if(tag._id == imageTag._id){
+								tagFound = true;
+							}
+						});
+					});
+					if(tagFound == false){
+						angular.forEach(MessageList.query(), function(message){
+							angular.forEach(message.tags, function(messageTag){
+								if(tag._id == messageTag._id){
+									tagFound = true;
+								}
+							});
+						});
+					}
+					if(tagFound == false){
+						
+						$http.get("api/tags/delete/" + tag._id);
+					}
 				});
 			}
 		};
