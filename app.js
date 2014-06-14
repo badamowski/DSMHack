@@ -126,10 +126,9 @@ app.post("/api/images/upload", function(req, res){
         fs.writeFile(newPath, data, function (err) {
           if (err) {
             console.log(err);
+          }else{
+            res.redirect("/#/admin/image/edit/" + newImage._id);
           }
-          res.send(newImage);
-          //NEED TO CHANGE LINK TO SINGLE IMAGE EDIT
-          res.redirect("/#/admin/image/edit/:id");
         });
       });
     }

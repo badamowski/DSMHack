@@ -88,7 +88,7 @@ module.exports = function(models, fs, path){
      imageDelete:  function(req, res){
       return models.image.findById(req.params.id, function (err, data) {
         if(!err && data){
-          var imageLocation = path.normalize(__dirname + "/../chrysalis-public/www/img/drawings/" + data.id + "." + data.extension);
+          var imageLocation = path.normalize(__dirname + "/../chrysalis-public/www/img/drawings/" + data.id + data.extension);
           return data.remove(function(err){
             if (!err) {
               if (fs.existsSync(imageLocation)) {
