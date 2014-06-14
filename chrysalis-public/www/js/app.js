@@ -260,8 +260,13 @@ app.config(function($routeProvider) {
 							});
 						});
 					}else{
-						var idx = message.tags.indexOf(data[0]);
-						if (idx <= -1) {
+						var contains = false;
+						angular.forEach(message.tags, function(tag){
+							if(tag._id == data[0]._id){
+								contains = true;
+							}
+						});
+						if (!contains) {
 							message.tags.push(data[0]);
 							$http.post("api/messages/update/" + message._id, message).success(function(data) {
 								
@@ -365,6 +370,11 @@ app.config(function($routeProvider) {
 			}
 		};
 
+		$scope.saveButton = function($event){
+			$event.preventDefault();
+			$location.path("/admin/images");
+		};
+
 		$scope.addNewTag = function($event){
 			$event.preventDefault();
 			if(!$scope.image.tags){
@@ -380,10 +390,15 @@ app.config(function($routeProvider) {
 							});
 						});
 					}else{
-						var idx = $scope.image.tags.indexOf(data[0]);
-						if (idx <= -1) {
+						var contains = false;
+						angular.forEach($scope.image.tags, function(tag){
+							if(tag._id == data[0]._id){
+								contains = true;
+							}
+						});
+						if (!contains) {
 							$scope.image.tags.push(data[0]);
-							$http.post("api/image/update/" + $scope.image._id, $scope.image).success(function(data) {
+							$http.post("api/images/update/" + $scope.image._id, $scope.image).success(function(data) {
 							});
 						}
 					}
