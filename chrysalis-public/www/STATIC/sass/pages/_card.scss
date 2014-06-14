@@ -29,6 +29,7 @@ a.submit {
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 50px;
+	min-height: 500px;
 	img {
 		width: 100%;
 		position: absolute;
@@ -44,7 +45,9 @@ a.submit {
 		position: relative;
 		z-index: 90;
 		height: 100%;
-		padding: 50px 40px 30px;
+		min-height: 500px;
+		padding-bottom: 50px;
+		padding: 50px 40px 80px 40px;
 		p {
 			line-height: 1.4em;
 			font-size: 1.2em;
@@ -66,7 +69,9 @@ a.submit {
 		width: 40%;
 		min-width: 300px;
 		height: auto;
-		position: relative;
+		position: absolute;
+		bottom: 0;
+		right: 0;
 		z-index: 90;
 		padding: 10px 0;
 		img {

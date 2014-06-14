@@ -89,8 +89,7 @@ button, .button, .submit {
   font-weight: bold;
   font-size: 115%;
   text-decoration: none;
-  text-transform: lowercase;
-  margin: 0; }
+  text-transform: lowercase; }
   button:hover, button:focus, .button:hover, .button:focus, .submit:hover, .submit:focus {
     background-color: #fcbb35; }
 
@@ -134,8 +133,7 @@ form label {
 form input {
   float: left;
   margin-right: 20px;
-  padding: 10px;
-  border: 1px solid #aaa; }
+  padding: 10px; }
 
 /* ////////////////////////////////////////////// Layout styles */
 .header-top {
@@ -300,13 +298,10 @@ form input {
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer; }
+  overflow: hidden; }
   .cards a img {
     min-width: 100%;
-    max-width: 150%;
-    min-height: 100%;
-    max-height: 150%; }
+    max-width: 200px; }
   .cards a:hover {
     border: 8px solid #b0ba25; }
 
@@ -348,7 +343,8 @@ a.submit {
   border: 4px solid #d7d7d7;
   position: relative;
   overflow: hidden;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  min-height: 500px; }
   .card img {
     width: 100%;
     position: absolute;
@@ -358,11 +354,14 @@ a.submit {
   .card .message {
     float: right;
     width: 40%;
+    min-width: 300px;
     background: white;
     position: relative;
     z-index: 90;
     height: 100%;
-    padding: 50px 40px 30px; }
+    min-height: 500px;
+    padding-bottom: 50px;
+    padding: 50px 40px 80px 40px; }
     .card .message p {
       line-height: 1.4em;
       font-size: 1.2em; }
@@ -378,8 +377,11 @@ a.submit {
     background: #b0ba25;
     float: right;
     width: 40%;
+    min-width: 300px;
     height: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     z-index: 90;
     padding: 10px 0; }
     .card .logo-bar img {
@@ -388,6 +390,13 @@ a.submit {
       height: 36px;
       margin: 0 auto;
       display: block; }
+  .card .drawing {
+    height: 100%;
+    width: 60%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover; }
   .card.vert img {
     position: relative; }
   .card.vert .message {
@@ -395,27 +404,6 @@ a.submit {
   .card.vert .message, .card.vert .logo-bar {
     float: none;
     width: 100%; }
-
-.checked .has-error {
-  border: 1px solid #f3776f; }
-.checked.ng-invalid .error {
-  display: block;
-  font-size: 85%; }
-
-.text {
-  zoom: 1; }
-  .text:before, .text:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    overflow: hidden; }
-  .text:after {
-    clear: both; }
-  .text h1 {
-    display: inline-block;
-    max-width: 75%; }
-  .text .button {
-    float: right; }
 
 /* Media Quieres */
 @media all and (max-width: 980px) {
@@ -473,11 +461,10 @@ a.submit {
     float: none;
     width: 100px; }
 
-.admin-page .header-bottom {
-  overflow: hidden;
-  padding: 0; }
-  .admin-page .header-bottom p {
-    padding: 10px 0 0; }
+.admin-page .content {
+  padding: 0 20px 0 20px; }
+  .admin-page .content h1 {
+    padding-top: 40px; }
 
 .tabs {
   float: right; }
@@ -486,14 +473,16 @@ a.submit {
     width: 120px;
     padding: 10px 10px;
     text-align: center;
-    background: #dfe747; }
+    background: #d7d7d7; }
     .tabs .tab a {
       text-transform: lowercase;
       color: #5e6300;
       font-size: .8em;
       text-decoration: none; }
     .tabs .tab.active {
-      background: white; }
+      background: #89901b; }
+      .tabs .tab.active a {
+        color: white; }
 
 .options {
   margin-bottom: 50px; }
@@ -573,6 +562,19 @@ a.submit {
     color: white;
     text-align: center;
     text-transform: uppercase; }
+
+.admin-page .message {
+  clear: both;
+  margin-bottom: 50px;
+  max-width: 300px; }
+  .admin-page .message input[type="checkbox"] {
+    float: left;
+    margin-right: 5px; }
+  .admin-page .message p {
+    padding-left: 21px;
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 10px;
+    margin-bottom: 5px; }
 
 .tag, .add-tag {
   font-size: .8em; }
@@ -695,11 +697,6 @@ a.submit {
     float: none;
     width: 100%;
     margin-bottom: 20px; } }
-.upload input[type="file"] {
-  border: none; }
-.upload input {
-  display: block; }
-
 form.donation {
   margin: 20px 0 50px;
   overflow: hidden; }
@@ -708,13 +705,6 @@ form.donation {
     font-size: 2em;
     margin-right: 30px;
     color: #b0ba25; }
-  form.donation label {
-    left: auto;
-    top: auto;
-    display: block;
-    width: auto;
-    height: auto;
-    position: static; }
 
 .how-to-donate {
   clear: both; }
