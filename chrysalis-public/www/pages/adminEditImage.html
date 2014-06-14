@@ -1,17 +1,25 @@
+<div class="tabs">
+  <div class="tab">
+    <a ng-click="goToMessages($event)" href="#">Messages</a>
+  </div>
+  <div class="tab active">
+    <a ng-click="goToImages($event)" href="#">Images</a>
+  </div>
+</div>
+
 <h1>Images</h1>
-  			<div class="options">
-  				<a ng-click="deleteImage($event)" href="#" class="delete">Delete</a>
-  				<a href="#" class="unpublish">Unpublish</a>
-  				<a href="#" class="button">Save</a>
-  			</div>
+
+<div class="options">
+	<a ng-click="deleteImage($event)" href="#" class="delete">Delete</a>
+	<a href="#" class="unpublish">Unpublish</a>
+	<a href="#" class="button">Save</a>
+</div>
   			
-  			<div class="card-preview">
-			    <img ng-src="img/drawings/{{image._id}}{{image.extension}}">
-  			</div>  
-  			<div class="tags">
-          <a ng-repeat="tag in image.tags" href="#" class="tag" ng-click="removeTag(tag, $event)">{{tag.name}}</a>
-          <a href="#" class="add-tag" ng-click="addNewTag($event)">New tag</a><input ng-model="image.newTagName" type="text" >
-  			</div>
+<div class="card-preview">
+  <img ng-src="img/drawings/{{image._id}}{{image.extension}}">
+</div>  
 
-
-
+<div class="tags">
+  <a ng-repeat="tag in image.tags" href="#" class="tag" ng-click="removeTag(tag, $event)">{{tag.name}}</a>
+  <a href="#" class="add-tag" ng-click="addNewTag($event)">New tag</a><input ng-model="image.newTagName" type="text" >
+</div>

@@ -330,6 +330,14 @@ app.config(function($routeProvider) {
 				return contains;
 			};
 		};
+
+		$scope.goToMessages = function($event){
+			$event.preventDefault();
+			$location.path('/admin/messages');
+		};
+		$scope.goToImages = function($event){
+			$event.preventDefault();
+		};
 	}]
 )
 
@@ -380,6 +388,15 @@ app.config(function($routeProvider) {
 						}
 					}
 				});
+		};
+
+		$scope.goToMessages = function($event){
+			$event.preventDefault();
+			$location.path('/admin/messages');
+		};
+		$scope.goToImages = function($event){
+			$event.preventDefault();
+			$location.path('/admin/images');
 		};
 	}]
 );
