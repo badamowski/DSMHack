@@ -300,7 +300,8 @@ form input {
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   border-radius: 12px;
-  overflow: hidden; }
+  overflow: hidden;
+  cursor: pointer; }
   .cards a img {
     min-width: 100%;
     max-width: 150%;
