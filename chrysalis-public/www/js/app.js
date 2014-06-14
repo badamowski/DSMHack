@@ -365,6 +365,11 @@ app.config(function($routeProvider) {
 			}
 		};
 
+		$scope.saveButton = function($event){
+			$event.preventDefault();
+			$location.path("/admin/images");
+		};
+
 		$scope.addNewTag = function($event){
 			$event.preventDefault();
 			if(!$scope.image.tags){
