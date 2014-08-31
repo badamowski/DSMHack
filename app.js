@@ -14,7 +14,7 @@ var app = express();
 var helloName = require("./server/helloName");
 var api = require("./server/api");
 
-mongoose.connect("54.187.178.36:27017/chrysalis");
+mongoose.connect("localhost:27017/chrysalis");
 var db = mongoose.connection;
 
 var models = require(__dirname + "/server/Model/models")(mongoose);
