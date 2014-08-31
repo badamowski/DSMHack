@@ -133,8 +133,8 @@ app.post("/api/images/upload", ensureAuthenticated, function(req, res){
   });
 });
 
-app.listen(80, function() {
-  console.log("Application started on port 80!");
+app.listen(8080, function() {
+  console.log("Application started on port 8080!");
 });
 //SEND CARD - UNSECURED
 app.get('/api/cards/send/:id', function(req, res){
