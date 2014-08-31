@@ -21,6 +21,7 @@ var models = require(__dirname + "/server/Model/models")(mongoose);
 var endpoints = require(__dirname + "/server/endpoints")(models, fs, path);
 var AdminModel = require(__dirname + "/server/Model/Admin")(mongoose);
 
+var websiteURL = "54.68.31.175";
 
 var transport = nodemailer.createTransport("Gmail",{
     auth: {
@@ -132,8 +133,8 @@ app.post("/api/images/upload", ensureAuthenticated, function(req, res){
   });
 });
 
-app.listen(8080, function() {
-  console.log("Application started on port 8080!");
+app.listen(80, function() {
+  console.log("Application started on port 80!");
 });
 //SEND CARD - UNSECURED
 app.get('/api/cards/send/:id', function(req, res){
@@ -146,7 +147,7 @@ app.get('/api/cards/send/:id', function(req, res){
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
       var text = "Here is the link to your ecard: " +
-        "<a href=\"http://54.187.178.36:8080/#/ecard/" +
+        "<a href=\"http://" + websiteURL +  "/#/ecard/" +
         req.params.id + "\">Chrysalis ecard</a>";
 
       var mailOptions = {
